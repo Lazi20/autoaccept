@@ -1,18 +1,16 @@
 import pyautogui
-button7location = pyautogui.locateOnScreen('accept.png')
-button7location
-Box(left=1416, top=562, width=50, height=41)
-button7location[0]
-1416
-button7location.left
-1416
-button7point = pyautogui.center(button7location)
-button7point
-Point(x=1441, y=582)
-button7point[0]
-1441
-button7point.x
-1441
-button7x, button7y = button7point
-pyautogui.click(button7x, button7y)  # clicks the center of where the 7 button was found
-pyautogui.click('calc7key.png') # a shortcut version to click on the center of where the 7 button was found
+import time
+
+def seemta():
+    im = pyautogui.screenshot()
+    im.save('image.png')
+    acc = pyautogui.locateOnScreen('see.png', confidence=0.9)
+    acc_co = pyautogui.center(acc)
+    x, y = acc_co.x, acc_co.y
+    pyautogui.moveTo(x, y)
+    pyautogui.click(x, y)
+    pyautogui.moveTo(877, 770, 2)
+
+for i in range(3):
+    seemta()
+    time.sleep(10)
